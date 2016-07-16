@@ -1,2 +1,4 @@
 <%= image_tag @post.image.url(:medium) %>
+<!-- Above is Rails helper to display the image, rather than the URL, which
+would be what would happen by default -->
 <%= @post.caption %>

@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
 
   def index
+
   end
+  # This is where we will store any actions for our index page.
 
   def new
     @post = Post.new
@@ -11,13 +13,25 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to @post
+    if @post.save
+      flash[:success] = "Your post has been created."
+      redirect_to @post
+    # If the post saves, flash a success message and redirect back to the index
+    # view for posts.
+    else
+      flash[:alert] = "Halt, you fiend! You need an image to post here!"
+      render :new
+    # If the post does NOT save, flash error message and re-render the new
+    # view so user can resubmit with correct requirements.
+    end
   end
-  # Saves the post to the database.
+  # Creates new database row representing the post object and saves that row
+  # to the database.
 
   def show
     @post = Post.find(params[:id])
   end
+  # Displays a post.
 
   private
 
@@ -28,3 +42,7 @@ class PostsController < ApplicationController
   # (1) a caption param and (2) an image param.
 
 end
+
+# This bare controller (i.e. without any methods) was created by the rails cmd
+# => rails g controller posts
+# => rails g controller [name of controller]
