@@ -33,6 +33,21 @@ class PostsController < ApplicationController
   end
   # Displays a post.
 
+  def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      flash[:success] = "Post updated hombre"
+      redirect_to(root_path)
+    else
+      flash[:alert] = "Something is wrong with your form!"
+      redirect_to(root_path)
+    end
+  end
+
   private
 
   def post_params

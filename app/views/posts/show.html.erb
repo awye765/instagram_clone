@@ -2,3 +2,5 @@
 <!-- Above is Rails helper to display the image, rather than the URL, which
 would be what would happen by default -->
 <%= @post.caption %>
+<%= link_to 'Cancel', posts_path %>
+<%= link_to 'Edit Post', edit_post_path(@post) %>
