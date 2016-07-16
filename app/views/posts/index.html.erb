@@ -4,7 +4,7 @@
 </p>
 <% @posts.each do | post | %>
   <p>
-  <%= image_tag post.image.url(:medium) %>
+  <%= link_to (image_tag post.image.url(:medium), class:'img-responsive'), post_path(post) %>
   </p>
   <p>
   <%= post.caption %>
