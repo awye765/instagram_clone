@@ -1,2 +1,12 @@
 <h1>Photogram</h1>
-<%= link_to "New Post", new_post_path %>
+<p>
+  <%= link_to "New Post", new_post_path %>
+</p>
+<% @posts.each do | post | %>
+  <p>
+  <%= image_tag post.image.url(:medium) %>
+  </p>
+  <p>
+  <%= post.caption %>
+  </p>
+<% end %>

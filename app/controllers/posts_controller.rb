@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
 
   def index
-
+    @posts = Post.all
+  # Collects all of the posts in our Post model so we can use them in the index.
   end
-  # This is where we will store any actions for our index page.
 
   def new
     @post = Post.new
