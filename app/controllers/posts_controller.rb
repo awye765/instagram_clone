@@ -8,16 +8,19 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
-    # Creates new post object on which to base our forms when we create a new
-    # post using the 'new post' form in the 'views/posts/new.html.erb' view.
+    @post = current_user.posts.build
+    # Builds new current_user.posts object on which to base our forms when we
+    # create a new post using the 'new post' form in the
+    # 'views/posts/new.html.erb' view.
   end
 
   def create
-    @post = Post.create(post_params)
+    @post = current_user.posts.build(post_params)
+    # Builds a new current_user.posts object to be saved or not to the database
+    # depending on the outcome of the below logic.
     if @post.save
       flash[:success] = "Your post has been created."
-      redirect_to @post
+      redirect_to posts_path
     # If the post saves, flash a success message and redirect back to the index
     # view for posts.
     else

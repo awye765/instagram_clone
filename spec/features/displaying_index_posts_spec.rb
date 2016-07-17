@@ -3,9 +3,9 @@ require 'rails_helper'
 feature 'Index displays a list of posts' do
 
   before do
-    post_one = create(:post, caption: "This is post no. 1")
-    post_two = create(:post, caption: "This is post no. 2")
     user = create :user
+    post_one = create(:post, caption: "This is post no. 1", user_id: user.id)
+    post_two = create(:post, caption: "This is post no. 2", user_id: user.id)
     sign_in_with user
   end
 
