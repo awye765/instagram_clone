@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :owned_post, only: [:edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -67,6 +69,23 @@ class PostsController < ApplicationController
   end
   # Defines the params we will accept for a post.  In this case a post permits
   # (1) a caption param and (2) an image param.
+
+  def set_post
+    @post = Post.find(params[:id])
+  end
+  # This method sets the @post instance variable to the post from the Post model
+  # based on the post_id params.  E.g. if you visit http://localhost:3000/posts/76
+  # the @post instance variabnle is set to '76'.
+
+  def owned_post
+    unless @post.user.id == current_user.id
+      flash[:alert] = "That post doesn't belong to you!"
+      redirect_to root_path
+    end
+  end
+  # This method checks whether the current post is owned by (i.e. associated
+  # with) the current user.  If not, the current user is redirected to the index
+  # page and flashed the message "That post doesn't belong to you!"
 
 end
 
