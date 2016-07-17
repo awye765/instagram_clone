@@ -38,6 +38,10 @@ feature 'Deleting comments' do
     expect(current_path).to eq '/'
     # expect(page).to have_content("That doesn't belong to you!")
     expect(page).to have_content('You guys are too kind xo!')
+    # I can't get the commented out line of the above test to work.  Seems to
+    # suggest that the flash message 'That doesn't belong to you!" does not
+    # render on the index page after redirection if a user tries to delete the
+    # comment using the url and DELETE action.
   end
 
 end
