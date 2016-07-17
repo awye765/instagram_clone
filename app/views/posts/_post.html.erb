@@ -1,6 +1,8 @@
 <!-- This is a partial that sets out the layout design for posts.  By creating
 a partial we create a template that can get used each time we need to render
 one or more posts, e.g. in the show or index views.  This keeps our code DRY. -->
+
+<!-- POSTS - GENERAL -->
 <div class="posts-wrapper">
   <div class="post">
     <div class="post-head">
@@ -23,14 +25,23 @@ one or more posts, e.g. in the show or index views.  This keeps our code DRY. --
           </div>
           <%= post.caption %>
         </div>
-        <div class="comments" id="comments_<%= post.id %>"></div>
+        <div class="comments" id="comments_<%= post.id %>">
+          <% if post.comments %>
+            <%= render post.comments, post: post %>
+          <% end %>
+        </div>
       </div>
     </div>
     <div class="comment-like-form row">
       <div class="like-button col-sm-1">
         <span class="glyphicon glyphicon-heart-empty"></span>
       </div>
-      <div class="comment-form col-sm-11"></div>
+      <div class="comment-form col-sm-11">
+        <%= form_for([post, post.comments.build]) do |f| %>
+          <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
+          <%= submit_tag("Submit") %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

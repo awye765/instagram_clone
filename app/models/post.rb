@@ -20,4 +20,11 @@ class Post < ApplicationRecord
   belongs_to :user
   # Identifies that each post belongs to a user (i.e. is 'associated' with a
   # user).
+
+  has_many :comments, dependent: :destroy
+  # This identifies that each post has a ONE TO MANY relationship with comments.
+  # The dependent: :destroy part means all associated objects will be destroyed,
+  # e.g. if we delete a post then all their associated posts will be destroyed
+  # too.
+
 end
