@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  devise_for :users, :controllers => { registrations: 'registrations' }
+  # The code after :users, tells devise to look at our custom controller for
+  # handling registrations and updates to user registrations.
+
   root 'posts#index'
   # Specifies what Rails should route '/' to using the 'root' method.
   resources :posts
