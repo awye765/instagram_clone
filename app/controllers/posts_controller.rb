@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @posts = Post.all
   # Collects all of the posts in our Post model so we can use them in the index.
