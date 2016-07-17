@@ -27,16 +27,16 @@ feature 'Editing posts' do
     expect(page).to have_content("Oh god, you weren't meant to see this picture!")
   end
 
-    scenario "cannot edit a post that doesn't belong to you via the show page" do
-      find(:xpath, "//a[contains(@href,'posts/#{@post_two.id}')]").click
-      expect(page).to_not have_content('Edit Post')
-    end
+  scenario "cannot edit a post that doesn't belong to you via the show page" do
+    find(:xpath, "//a[contains(@href,'posts/#{@post_two.id}')]").click
+    expect(page).to_not have_content('Edit Post')
+  end
 
-    scenario "cannot edit a post that doesn't belong to you via url path" do
-      visit "/posts/#{@post_two.id}/edit"
-      expect(page.current_path).to eq root_path
-      expect(page).to have_content("That post doesn't belong to you!")
-    end
+  scenario "cannot edit a post that doesn't belong to you via url path" do
+    visit "/posts/#{@post_two.id}/edit"
+    expect(page.current_path).to eq root_path
+    expect(page).to have_content("That post doesn't belong to you!")
+  end
 
   scenario "It won't update a post without an attached image" do
     find(:xpath, "//a[contains(@href,'posts/#{@post_one.id}')]").click
