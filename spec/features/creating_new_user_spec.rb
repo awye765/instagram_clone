@@ -26,7 +26,7 @@ feature "Creating a new user" do
     expect(page).to have_content("can't be blank")
   end
 
-  scenario "required a user name to be more than 4 characters" do
+  scenario "requires a user name to be more than 4 characters" do
     fill_in 'Email', with: 'syxrailsdev@gmail.com'
     fill_in 'User name', with: 'bob'
     fill_in 'Password', with: 'password', match: :first
@@ -36,7 +36,7 @@ feature "Creating a new user" do
     expect(page).to have_content("is too short (minimum is 4 characters)")
   end
 
-  scenario "required a user name to be less than 4 characters" do
+  scenario "requires a user name to be less than 4 characters" do
     fill_in 'Email', with: 'syxrailsdev@gmail.com'
     fill_in 'User name', with: 'bobbbbbbbbbbbbbbbbbbbbbbbbb'
     fill_in 'Password', with: 'password', match: :first
@@ -45,5 +45,38 @@ feature "Creating a new user" do
     click_button 'Sign up'
     expect(page).to have_content("is too long (maximum is 16 characters)")
   end
+
+  scenario "requires a password" do
+    fill_in 'Email', with: 'syxrailsdev@gmail.com'
+    fill_in 'User name', with: 'bobby'
+    fill_in 'Password confirmation', with: 'password'
+
+    click_button 'Sign up'
+    expect(page).to have_content("can't be blank")
+
+  end
+
+  scenario "requires a password to be 6 characters or more" do
+    fill_in 'Email', with: 'syxrailsdev@gmail.com'
+    fill_in 'User name', with: 'bobby'
+    fill_in 'Password confirmation', with: 'pass'
+    fill_in 'Password confirmation', with: 'password'
+
+    click_button 'Sign up'
+    expect(page).to have_content("6 characters minimum")
+
+  end
+
+  scenario "requires a password to be 6 characters or more" do
+    fill_in 'Email', with: 'syxrailsdev@gmail.com'
+    fill_in 'User name', with: 'bobby'
+    fill_in 'Password confirmation', with: 'password1'
+    fill_in 'Password confirmation', with: 'password2'
+
+    click_button 'Sign up'
+    expect(page).to have_content("doesn't match Password")
+
+  end
+
 
 end
