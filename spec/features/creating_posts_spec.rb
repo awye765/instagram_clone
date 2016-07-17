@@ -2,6 +2,11 @@ require 'rails_helper'
 
 feature 'Creating posts' do
 
+  before do
+    user = create :user
+    sign_in_with user
+  end
+
   scenario 'can create a post' do
     visit '/'
     click_link 'New Post'
@@ -10,6 +15,7 @@ feature 'Creating posts' do
     click_button 'Create Post'
     expect(page).to have_content('#coffeetime')
     expect(page).to have_css("img[src*='coffee.jpg']")
+    # expect(page).to have_content('Arnie')
   end
 
   scenario 'a post needs an image to save' do
