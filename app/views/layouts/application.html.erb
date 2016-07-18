@@ -2,6 +2,9 @@
 <html>
   <head>
     <title>InstagramClone</title>
+    <meta charset="utf-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -12,23 +15,21 @@
     <%= render 'layouts/navbar' %>
     <!-- Renders navbar partial into each view. -->
 
-    <div class="container">
       <% flash.each do | name, msg | %>
       <!-- The "name" param is the type of flash message, e.g. :success, :alert,
       etc -->
-      <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
-      <!-- "content_tag" is a RAILs method that returns an HTML block.  The type
-      of HTML block is specified as <div> in the above and will contain the
-      message content of the flash, e.g. "Your post has been created". -->
-      <!-- The <div> class is specified as (1) "alert" and (2) by the custom
-      helper method, "alert_for(name)", which takes the type of flash message,
-      e.g. :success, :alert, etc, as the "name" param and assigns a BOOTSTRAP
-      class which will turn that flash a particular colour, e.g. green for
-      success. -->
-
-      <% end %>
-      <%= yield %>
-    </div>
+        <div class="container"></div>
+        <%= content_tag :div, msg, class: [:alert, alert_for(name)] %>
+        <!-- "content_tag" is a RAILs method that returns an HTML block.  The type
+        of HTML block is specified as <div> in the above and will contain the
+        message content of the flash, e.g. "Your post has been created". -->
+        <!-- The <div> class is specified as (1) "alert" and (2) by the custom
+        helper method, "alert_for(name)", which takes the type of flash message,
+        e.g. :success, :alert, etc, as the "name" param and assigns a BOOTSTRAP
+        class which will turn that flash a particular colour, e.g. green for
+        success. -->
+        <% end %>
+        <%= yield %>
 
   </body>
 
