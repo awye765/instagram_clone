@@ -6,7 +6,8 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all.order('created_at DESC').page params[:page]
-  # Collects all of the posts in our Post model so we can use them in the index.
+  # Collects all of the posts in our Post model so we can use them in the index
+  # and orders them in descending order of time of creation.
   end
 
   def new

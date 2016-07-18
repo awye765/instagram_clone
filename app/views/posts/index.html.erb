@@ -3,6 +3,8 @@
   <%= render 'post', post: post %>
   <% end %>
   <%= paginate @posts %>
+  <!-- This is to call the "paginate" method from the kaminari gem.  This is
+  what paginates the index page. -->
 </div>
 
 <!-- The above iterates through each post and renders out _post.html.erb partial
