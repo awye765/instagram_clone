@@ -35,6 +35,16 @@
   border: none;
 }
 
+.login-bg {
+  padding-top: 4em;
+  height: 100%;
+  background-image: image-url('photo-1464621922360-27f3bf0eca75.jpeg');
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .panel {
   border-radius: 8px;
 }
