@@ -28,6 +28,7 @@ one or more posts, e.g. in the show or index views.  This keeps our code DRY. --
         <div class="comments" id="comments_<%= post.id %>">
           <% if post.comments %>
             <%= render post.comments, post: post %>
+            <!-- The above renders the comments partial into the posts view. -->
           <% end %>
         </div>
       </div>
@@ -37,7 +38,7 @@ one or more posts, e.g. in the show or index views.  This keeps our code DRY. --
         <span class="glyphicon glyphicon-heart-empty"></span>
       </div>
       <div class="comment-form col-sm-11">
-        <%= form_for([post, post.comments.build]) do |f| %>
+        <%= form_for([post, post.comments.build], remote: true) do |f| %>
           <%= f.text_field :content, placeholder: 'Add a comment...', class: "comment_content", id: "comment_content_#{post.id}" %>
           <%= submit_tag("Submit") %>
         <% end %>

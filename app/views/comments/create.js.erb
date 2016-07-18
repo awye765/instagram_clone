@@ -1,0 +1,9 @@
+$('#comments_<%= @post.id %>').append("<%=j render 'comments/comment', post: @post, comment: @comment %>");
+// Selects comment by its div container id and appends the comment partial.
+$('#comment_content_<%= @post.id %>').val('')
+// Next we select the comment content by its div container id and change its
+// value to an empty string.
+//
+// Together the above does the following:
+// (1) Adds a newly added comment to the list of comments; and
+// (2) Clears out the form we just typed into.
