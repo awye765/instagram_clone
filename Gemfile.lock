@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/amatsuda/kaminari.git
+  revision: 7d3dbd8e396ddc30454d1bf156a00f21ed9adaf6
+  branch: master
+  specs:
+    kaminari (1.0.0.alpha)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -231,6 +240,7 @@ DEPENDENCIES
   factory_girl_rails
   jbuilder (~> 2.5)
   jquery-rails
+  kaminari!
   listen (~> 3.0.5)
   paperclip
   pg

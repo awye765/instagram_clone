@@ -1,7 +1,9 @@
 <div class="posts-wrapper row">
   <% @posts.each do |post| %>
-    <%= render 'post', post: post %>
+  <%= render 'post', post: post %>
   <% end %>
+  <%= paginate @posts %>
 </div>
+
 <!-- The above iterates through each post and renders out _post.html.erb partial
 to this page. -->

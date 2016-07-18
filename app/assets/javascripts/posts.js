@@ -4,4 +4,5 @@ var loadFile = function(event) {
 };
 
 // On change, we grab the 'image-preview' element and change it's src attribute
-// to the file path of our input.
+// to the file path of our input.  This displays the chosen preview image to
+// to that image which the user wishes to upload.
