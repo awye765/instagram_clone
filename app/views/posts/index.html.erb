@@ -1,13 +1,16 @@
 <div id="posts">
   <%= render 'posts' %>
-  <!-- Renders the 'posts' partial into the div.  The posts partial contains
-  a block that iterates through each post and renders out the _post.html.erb
-  partial within that partial.  Essentially there is a partial within a partial
- -->
 </div>
+<!-- Renders the 'posts' partial into the div.  The posts partial contains
+a block that iterates through each post and renders out the _post.html.erb
+partial within that partial.  Essentially there is a partial within a partial
+-->
 <div class="text-center" id="paginator">
 <!-- Creates new div that serves as the "LOAD MORE" button used to paginate
 the posts. The styling of this div into a circle is dealt with in the
 application.scss. -->
   <%= link_to_next_page @posts, 'LOAD MORE', remote: true, id: 'load_more' %>
 </div>
+
+<!-- REMEMBER the kaminari config settings are located at:
+/Users/alistairwye/projects/instagram_clone/config/initializers/kaminari_config.rb -->

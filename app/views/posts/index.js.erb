@@ -1,0 +1,13 @@
+$('#posts').append("<%= escape_javascript(render 'posts')%>");
+// Renders the _posts.html.erb partial and APPENDS it to (i.e. adds it to the
+// end of) the posts DIV in the index.html.erb file.  Here is a useful explanation
+// of the above syntax/pattern, in particular the "escape_javascript" syntax:
+// http://stackoverflow.com/questions/1620113/why-escape-javascript-before-rendering-a-partial
+$('#paginator').html("<%= escape_javascript(link_to_next_page(@posts, 'LOAD MORE', remote: true, id: 'load_more'))%>");
+// We select the #paginator div and set its contents to our link_to_next_page
+// kaminari helper method.  This will 'refresh' the link, meaning it will take
+// us continually onto the next page as we keep clicking rather than giving us
+// a link for page 2, 3, 4 and so on.  It will also reset its position.
+if (!$('#load_more').length) { $('#paginator').remove(); }
+// Removes #paginator div if the #load_more element (our link) does NOT exist,
+// i.e. where there are no further pages to load.

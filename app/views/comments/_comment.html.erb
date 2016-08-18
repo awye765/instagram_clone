@@ -1,7 +1,9 @@
 <!-- POSTS - COMMENTS -->
 <div id="comment">
   <div class="user-name">
-    <%= comment.user.user_name %>
+    <% if comment.user %>
+      <%= comment.user.user_name %>
+    <% end %>
   </div>
   <div class="comment-content">
     <%= comment.content %>
