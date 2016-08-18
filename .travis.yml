@@ -1,9 +1,9 @@
-rvm: '2.2.3'
+rvm: '2.3.0'
 
 services:
   - postgresql
 
 before_script:
-  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database instagram_clone_test;' -U postgres
 
 script: bundle exec rspec spec
