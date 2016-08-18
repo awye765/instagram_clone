@@ -59,18 +59,19 @@ feature "Creating a new user" do
   scenario "requires a password to be 6 characters or more" do
     fill_in 'Email', with: 'syxrailsdev@gmail.com'
     fill_in 'User name', with: 'bobby'
+    fill_in 'Password', with: 'pass'
     fill_in 'Password confirmation', with: 'pass'
-    fill_in 'Password confirmation', with: 'password'
 
     click_button 'Sign up'
-    expect(page).to have_content("6 characters minimum")
+    find('span.help-block').should have_content("is too short (minimum is 6 characters)")
+    # expect(page).to have_content("is too short (minimum is 6 characters")
 
   end
 
-  scenario "requires a password to be 6 characters or more" do
+  scenario "requires password and passowrd confirmation to be matching" do
     fill_in 'Email', with: 'syxrailsdev@gmail.com'
     fill_in 'User name', with: 'bobby'
-    fill_in 'Password confirmation', with: 'password1'
+    fill_in 'Password', with: 'password1'
     fill_in 'Password confirmation', with: 'password2'
 
     click_button 'Sign up'

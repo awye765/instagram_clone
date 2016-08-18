@@ -41,7 +41,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'simple_form'
   gem 'paperclip'
-
+  gem 'coveralls', require: false
 end
 
 group :development do
