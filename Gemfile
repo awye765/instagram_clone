@@ -41,6 +41,7 @@ group :development, :test do
   gem 'simple_form'
   gem 'paperclip'
   gem 'coveralls', require: false
+  gem 'jquery-turbolinks'
 end
 
 group :development do

@@ -25,12 +25,18 @@ one or more posts, e.g. in the show or index views.  This keeps our code DRY. --
           </div>
           <%= post.caption %>
         </div>
+
         <div class="comments" id="comments_<%= post.id %>">
-          <% if post.comments %>
-            <%= render post.comments, post: post %>
-            <!-- The above renders the comments partial into the posts view. -->
+          <% if post.comments.any? %>
+            <div class="paginator" id="#comments-paginator-<%= post.id %>">
+              <% unless post.comments.count <= 4 %>
+                <%= link_to "view all #{post.comments.count} comments", post_comments_path(post), remote: true, class: 'more-comments', data: { post_id: "#{post.id}", type: "html" } %>
+              <% end %>
+            </div>
+            <%= render post.comments.last(4), post: post %>
           <% end %>
         </div>
+
       </div>
     </div>
     <div class="comment-like-form row">
