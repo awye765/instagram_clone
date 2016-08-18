@@ -1,7 +1,13 @@
 rvm: '2.2.3'
 
+language: ruby
+
+bundler_args: --without production
+
+services:
+  - postgresql
+
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - RAILS_ENV=test bundle exec rake db:create
+  - psql -c 'create database instragram_clone_test;' -U postgres
 
 script: bundle exec rspec spec
