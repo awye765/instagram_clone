@@ -1,11 +1,13 @@
-<div class="posts-wrapper row">
-  <% @posts.each do |post| %>
-  <%= render 'post', post: post %>
-  <% end %>
-  <%= paginate @posts %>
-  <!-- This is to call the "paginate" method from the kaminari gem.  This is
-  what paginates the index page. -->
+<div id="posts">
+  <%= render 'posts' %>
+  <!-- Renders the 'posts' partial into the div.  The posts partial contains
+  a block that iterates through each post and renders out the _post.html.erb
+  partial within that partial.  Essentially there is a partial within a partial
+ -->
 </div>
-
-<!-- The above iterates through each post and renders out _post.html.erb partial
-to this page. -->
+<div class="text-center" id="paginator">
+<!-- Creates new div that serves as the "LOAD MORE" button used to paginate
+the posts. The styling of this div into a circle is dealt with in the
+application.scss. -->
+  <%= link_to_next_page @posts, 'LOAD MORE', remote: true, id: 'load_more' %>
+</div>
