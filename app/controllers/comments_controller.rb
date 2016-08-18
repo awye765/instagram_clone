@@ -28,9 +28,9 @@ class CommentsController < ApplicationController
         format.html { redirect_to root_path }
         format.js
       end
-    else
-      flash[:alert] = "That doesn't belong to you!"
-      redirect_to root_path
+    # else
+    #   flash[:alert] = "That doesn't belong to you!"
+    #   redirect_to root_path
     end
   end
 
