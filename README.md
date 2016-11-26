@@ -26,7 +26,7 @@ This README is to be updated as I progress with the project.  Once it is finishe
 * User profile pages
 * User notifications, e.g. regarding 'likes' of user's posts or 'follow' requests
 
-### Technologies (as at 18 Aug 2016)
+### Technologies (as at 26 Nov 2016)
 
 * Ruby
 * Ruby on Rails
